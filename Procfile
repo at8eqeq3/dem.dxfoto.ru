@@ -1,1 +1,1 @@
-web: ruby poster.rb -p $PORT
+web: bundle exec ruby poster.rb -p $PORT
