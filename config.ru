@@ -1,2 +1,2 @@
-require 'poster.rb'
+require './poster.rb'
 run Poster
