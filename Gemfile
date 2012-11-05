@@ -1,6 +1,7 @@
 source "http://rubygems.org"
 gem 'sinatra', :require => 'sinatra/base'
 gem 'bson'
+gem 'bson_ext'
 gem 'mongoid'
 gem 'rmagick', :require => 'rvg/rvg'
 gem 'haml'
