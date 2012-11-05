@@ -6,6 +6,8 @@ development:
       database: demon_kz
 # Tell Mongoid which environment this configuration is for.
 production:
+  host: localhost
+  database: dem_dxfoto.ru
   sessions:
     default:
       hosts:
