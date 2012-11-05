@@ -8,7 +8,7 @@ require 'rdiscount'
 require 'omniauth-vkontakte'
 require 'sinatra/flash'
 require 'sinatra/r18n'
-require './keys.rb'
+#require './keys.rb'
 include Magick
 
 class Poster < Sinatra::Base
@@ -18,7 +18,7 @@ class Poster < Sinatra::Base
   register Sinatra::Flash
   enable :logging
   use OmniAuth::Builder do
-    provider :vkontakte, vk_id, vk_secret
+    provider :vkontakte, VK_ID, VK_SECRET
   end
   register Sinatra::R18n
   set :root, File.dirname(__FILE__)
