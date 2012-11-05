@@ -1,0 +1,12 @@
+.row
+  .span12
+    .page-header
+      %h1
+        Результаты поиска
+        %small= "&laquo#{params[:term]}&raquo;"
+  .span12
+    %ul.thumbnails
+      - @images.each do |image|
+        %li.span3
+          %a.thumbnail{:href => "/image/#{image.filename}"}
+            %img{:src => "/uploads/#{image.filename[0]}/#{image.filename}.jpg"}

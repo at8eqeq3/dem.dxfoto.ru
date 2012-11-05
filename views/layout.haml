@@ -1,0 +1,77 @@
+!!! 5
+%html
+  %head
+    %title YADG
+    - unless @image.nil?
+      :plain
+        <meta property="og:title" content="#{@image.slogan} :: #{@image.tagline}" />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content="http://dem.dxfoto.ru/uploads/#{@image.filename[0]}/#{@image.filename}.jpg" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="600" />
+        <meta property="og:url" content="http://dem.dxfoto.ru/images/#{@image.filename}" />
+        <meta property="og:site_name" content="YADG" />
+    %link{:rel => "stylesheet", :href => "/css/bootstrap.min.css"}
+    %link{:rel => "stylesheet", :href => "/css/style.css"}
+    %script{:src => "/js/bootstrap.min.js"}
+    %script{:src => "//vk.com/js/api/share.js?11"}
+    %script{:src => "//vk.com/js/api/openapi.js?63"}
+    :javascript
+      VK.init({apiId: 3217847, onlyWidgets: true});
+  %body
+    .container
+      .row
+        .navbar.navbar-inverse
+          .navbar-inner
+            %a.brand{:href => "/"} YADG
+            %ul.nav
+              %li.divider-vertical
+              %li
+                %a{:href => '/about'} Чё-почём
+              - if session[:uid]
+                %li
+                  %a{:href => '/create'} Создать постер
+                %li
+                  %a{:href => '/me'} Моя страница
+                %li.divider-vertical
+              - else
+                %li
+                  %a{:href => "/auth/vkontakte"}
+                    Вход (через ВКонтакте)
+                %li.divider-vertical
+            %form.navbar-search.pull-right{:action => "/search"}
+              %input.search-query{:name => "term", :type => "text", :placeholder => "Поиск"}
+      - unless flash.empty?
+        - flash.each do |level, message|
+          .row
+            .span8.offset2
+              .alert.alert-block{:class => "alert-#{level}"}
+                = message
+      = yield
+      .row.footer
+        .span5
+          %h5 YADG :: dem.dxfoto.ru
+          %p генератор демотивационных постеров с унылой интеграцией с ВКонтакте
+          %p
+            :markdown
+              Исходники проекта на [GitHub](https://github.com/at8eqeq3/dem.dxfoto.ru/). Сделано за два вечера [at8eqeq3](http://vk.com/at8eqeq3). Работает на едрене фене и жуках майских.
+
+        .span3
+          :markdown
+            [ruby](http://ruby-lang.org)&nbsp;::
+            [sinatra](http://sinatrarb.com)&nbsp;::
+            [sinatra-flash](https://github.com/SFEley/sinatra-flash)&nbsp;::
+            [sinatra-r18n](https://github.com/ai/r18n)&nbsp;::
+            [mongodb](http://mongodb.org)&nbsp;::
+            [mongoid](http://mongoid.org)&nbsp;::
+            [omniauth](https://github.com/intridea/omniauth)&nbsp;::
+            [omniauth-vkontakte](https://github.com/mamantoha/omniauth-vkontakte)&nbsp;::
+            [imagemagick](http://imagemagick.org)&nbsp;::
+            [rmagick](http://rmagick.rubyforge.org)&nbsp;::
+            [vkontakte](https://vk.com)&nbsp;::
+            [bootstrap](http://twitter.github.com/bootstrap)&nbsp;::
+            [haml](http://haml.info)&nbsp;::
+            [clodo](http://clodo.ru)&nbsp;::
+            [opensuse](http://opensuse.org)&nbsp;::
+            [oranienbaum font](http://www.jovanny.ru/)

@@ -1,0 +1,26 @@
+.row
+  .span12
+    .page-header
+      %h1 Создать новый постер
+.row
+  .span10.offset1
+    %form.form-horizontal{:method => "post", :enctype => "multipart/form-data"}
+      .control-group
+        %label.control-label{:for => "image"} Изображение
+        .controls
+          %input{:type => "file", :name => "image"}
+          %span.help-block Изображение в формате PNG, JPEG, BMP (или любом другом, поддерживаемом ImageMagick)
+      .control-group
+        %label.control-label{:for => "slogan"} Слоган
+        .controls
+          %input{:type => "text", :name => "slogan"}
+          %span.help-block
+            :markdown
+              Верхняя строчка, одно-два слова, раскрывающих *суть*
+      .control-group
+        %label.control-label{:for => "tagline"} Тэглайн
+        .controls
+          %input{:type => "text", :name => "tagline"}
+          %span.help-block Нижняя строчка, поясняющая смысл. Желательно, тоже покороче
+      .form-actions
+        %button.btn.btn-primary{:type => "submit"} Создать

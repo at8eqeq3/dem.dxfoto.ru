@@ -1,0 +1,19 @@
+.row
+  .span12
+    .hero-unit
+      %h1 YADG
+      %p Очередной унылый генератор демотивационных постеров
+.row
+  .span12
+    %p= "Пользователей: #{@users_count}, постеров: #{@images_count}"
+.row
+  %ul.thumbnails
+    - @images.each do |image|
+      %li.span3
+        %a.thumbnail{:href => "/image/#{image.filename}"}
+          %img{:src => "/uploads/#{image.filename[0]}/#{image.filename}.jpg"}
+.row
+  .span12
+    #vk_groups
+:javascript
+  VK.Widgets.Group("vk_groups", {mode: 2, wide: 1, width: "1170", height: "585"}, 45261961);

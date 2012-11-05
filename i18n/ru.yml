@@ -1,0 +1,8 @@
+flash:
+  errors:
+    please_login: Пожалуйста, авторизуйтесь
+    creation_failed: Сохранить картинку не удалось. Простите.
+    oauth_error: Авторизация почему-то не прошла. Готично.
+  successes:
+    poster_created: Постер успешно создан
+    welcome: Здрасте вам, %1

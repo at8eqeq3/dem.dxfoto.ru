@@ -1,0 +1,13 @@
+.row
+  .span12
+    .page-header
+      %h1
+        %a{:href => "https://vk.com/#{@user.uid}"}
+          %img.userpic{:src => @user.userpic}
+        = @user.name
+  .span12
+    %ul.thumbnails
+      - @user.images.each do |image|
+        %li.span3
+          %a.thumbnail{:href => "/image/#{image.filename}"}
+            %img{:src => "/uploads/#{image.filename[0]}/#{image.filename}.jpg"}

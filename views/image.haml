@@ -1,0 +1,30 @@
+.row
+  .span12
+    .page-header
+      %h1
+        = @image.slogan
+        %small= @image.tagline
+.row
+  .span8
+    %img.img-polaroid{:src => "/uploads/#{@image.filename[0]}/#{@image.filename}.jpg"}
+  .span4
+    .row
+      .span4.well
+        #vk_subscribe
+    .row
+      .span4.well
+        %p= "http://dem.dxfoto.ru/uploads/#{@image.filename[0]}/#{@image.filename}.jpg"
+
+    .row
+      .span2.well
+        #vk_like
+      .span2.well
+        :javascript
+          document.write(VK.Share.button(false,{type: "button", text: "Сохранить"}));
+    .row
+      .span4.well
+        #vk_comments
+:javascript
+  VK.Widgets.Comments("vk_comments", {limit: 10, width: "370", attach: false});
+  VK.Widgets.Like("vk_like", {type: "full", height: 24});
+  VK.Widgets.Subscribe("vk_subscribe", {mode: 1}, #{@image.user.uid});
