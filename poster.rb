@@ -10,7 +10,7 @@ require 'rdiscount'
 require 'omniauth-vkontakte'
 require 'sinatra/flash'
 require 'sinatra/r18n'
-#require './keys.rb'
+require './keys.rb'
 include Magick
 
 class Poster < Sinatra::Base
@@ -79,8 +79,8 @@ class Poster < Sinatra::Base
         src = src.resize_to_fill(642, 432)
         # draw the poster
         rvg = RVG.new(800, 640).viewbox(0, 0, 800, 640) do |canvas|
-          canvas.background_fill= 'black'
-          canvas.styles :fill => 'white'
+          canvas.background_fill= '#222200'
+          canvas.styles :fill => '#ffffdd'
           canvas.rect 650, 440, 75, 50
           #canvas.styles :fill => 'black'
           #canvas.rect 644, 434, 78, 53
@@ -89,13 +89,13 @@ class Poster < Sinatra::Base
             sl.tspan(slogan).styles(:text_anchor => 'middle',
                                     :font_size => 55,
                                     :font => 'Oranienbaum.ttf',
-                                    :fill => 'white')
+                                    :fill => '#ffffdd')
           end
           canvas.text(400, 600) do |tl|
             tl.tspan(tagline).styles(:text_anchor => 'middle',
                                      :font_size => 32,
                                      :font => 'Cuprum-Regular.ttf',
-                                     :fill => 'white')
+                                     :fill => '#ffffdd')
           end
         end
         # save to DB
@@ -106,11 +106,12 @@ class Poster < Sinatra::Base
         # save file
         filename = image.filename
         Dir.mkdir("public/uploads/#{filename[0]}") unless Dir.exist?("public/uploads/#{filename[0]}")
-        rvg.draw.write "public/uploads/#{filename[0]}/#{filename}.jpg"
+        Dir.mkdir("public/uploads/#{filename[0]}/#{filename[1]}") unless Dir.exist?("public/uploads/#{filename[0]}/#{filename[1]}")
+        rvg.draw.write "public/uploads/#{filename[0]}/#{filename[1]}/#{filename}.jpg"
         flash[:success] = t.flash.successes.poster_created
         redirect "/image/#{filename}"
       rescue Exception => e
-        if !File.file?("public/uploads/#{filename[0]}/#{filename}.jpg")
+        if !File.file?("public/uploads/#{filename[0]}/#{filename[1]}/#{filename}.jpg")
           image.destroy
         end
         flash[:error] = t.flash.errors.creation_failed

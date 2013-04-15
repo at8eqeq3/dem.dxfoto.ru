@@ -11,7 +11,7 @@
     - @images.each do |image|
       %li.span3
         %a.thumbnail{:href => "/image/#{image.filename}"}
-          %img{:src => "/uploads/#{image.filename[0]}/#{image.filename}.jpg"}
+          %img{:src => "/uploads/#{image.filename[0]}/#{image.filename[1]}/#{image.filename}.jpg"}
 .row
   .span12
     #vk_groups

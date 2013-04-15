@@ -6,14 +6,14 @@
         %small= @image.tagline
 .row
   .span8
-    %img.img-polaroid{:src => "/uploads/#{@image.filename[0]}/#{@image.filename}.jpg"}
+    %img.img-polaroid{:src => "/uploads/#{@image.filename[0]}/#{@image.filename[1]}/#{@image.filename}.jpg"}
   .span4
     .row
       .span4.well
         #vk_subscribe
     .row
       .span4.well
-        %p= "http://dem.dxfoto.ru/uploads/#{@image.filename[0]}/#{@image.filename}.jpg"
+        %p= "http://dem.dxfoto.ru/uploads/#{@image.filename[0]}/#{@image.filename[1]}/#{@image.filename}.jpg"
 
     .row
       .span2.well
