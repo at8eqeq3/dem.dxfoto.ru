@@ -6,13 +6,13 @@ development:
       database: demon_kz
 # Tell Mongoid which environment this configuration is for.
 production:
-  host: ds041377.mongolab.com:41377
-  database: heroku_app9005369
+  host: localhost
+  database: dem_dxfoto_ru
   sessions:
     default:
       hosts:
-        - ds041377.mongolab.com:41377
-      database: heroku_app9005369
+        - localhost
+      database: dem_dxfoto_ru
   options:
     allow_dynamic_fields: false
     identity_map_enabled: true
