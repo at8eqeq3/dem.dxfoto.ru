@@ -2,9 +2,12 @@
 %html
   %head
     %title YADG
+    %meta{property: "fb:admins", content: "100001367530709"}
+    %meta{property: "fb:app_id", content: "575652682467264"}
     - unless @image.nil?
       :plain
         <meta property="og:title" content="#{@image.slogan} :: #{@image.tagline}" />
+        <meta property="og:description" content="#{@image.slogan} :: #{@image.tagline}" />
         <meta property="og:type" content="article" />
         <meta property="og:image" content="http://dem.dxfoto.ru/uploads/#{@image.filename[0]}/#{@image.filename[1]}/#{@image.filename}.jpg" />
         <meta property="og:image:type" content="image/jpeg" />
