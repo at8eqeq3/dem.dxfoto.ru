@@ -19,6 +19,7 @@
         <meta name="twitter:image:height" content="640" />
         <meta name="twitter:url" content="http://dem.dxfoto.ru/image/#{@image.filename}" />
         <meta name="twitter:site" content="@at8eqeq3" />
+        <link rel="image_src" href="http://dem.dxfoto.ru/uploads/#{@image.filename[0]}/#{@image.filename[1]}/#{@image.filename}.jpg" />
     %link{:rel => "stylesheet", :href => "/css/bootstrap.min.css"}
     %link{:rel => "stylesheet", :href => "/css/style.css"}
     %script{:src => "//vk.com/js/api/share.js?11"}
@@ -80,6 +81,6 @@
             [haml](http://haml.info)&nbsp;::
             [firstvds](http://firstvds.ru)&nbsp;::
             [freebsd](http://freebsd.org)&nbsp;::
-            [nice font](http://www.jovanny.ru/)
+            [nice fonts](http://www.jovanny.ru/)
     :plain
       <!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter20998294 = new Ya.Metrika({id:20998294, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/20998294" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->

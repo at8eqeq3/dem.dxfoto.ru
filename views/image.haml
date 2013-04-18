@@ -1,3 +1,4 @@
+
 .row
   .span12
     .page-header
@@ -16,11 +17,24 @@
         %p= "http://dem.dxfoto.ru/uploads/#{@image.filename[0]}/#{@image.filename[1]}/#{@image.filename}.jpg"
 
     .row
-      .span2.well
+      .span4.well
         #vk_like
-      .span2.well
+      .span4.well
         :javascript
           document.write(VK.Share.button(false,{type: "button", text: "Сохранить"}));
+        %a.twitter-share-button{href: "https://twitter.com/share", data: {lang: "ru", hashtags: "YADG", text: "#{@image.slogan} :: #{@image.tagline}"}}
+        :javascript
+          !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+        #fb-root
+        :javascript
+          (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
+        .fb-like{data: {send: "false", layout: "button_count", width: "450", show_faces: "false"}}
     .row
       .span4.well
         #vk_comments
