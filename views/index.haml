@@ -7,9 +7,11 @@
   .span12
     %p= "Пользователей: #{@users_count}, постеров: #{@images_count}"
 .row
+  .page-header
+    %h2 Выбор редакции
   %ul.thumbnails
     - @images.each do |image|
-      %li.span3
+      %li.span6
         %a.thumbnail{:href => "/image/#{image.filename}"}
           %img{:src => "/uploads/#{image.filename[0]}/#{image.filename[1]}/#{image.filename}.jpg"}
 .row
