@@ -32,16 +32,24 @@ class Poster < Sinatra::Base
     field :name, :type => String
     field :userpic, :type => String
     has_many :images
+    has_many :visits
   end
   class Image
     include Mongoid::Document
     field :slogan,  :type => String
     field :tagline, :type => String
     field :staff_pick, :type => Boolean
+    field :created_at, :type => DateTime
     belongs_to :user
     def filename
       self.id.to_s.to_i(16).to_s(36)
     end
+  end
+  class Visit
+    include Mongoid::Document
+    field :remote_ip, :type => String
+    field :created_at, :type => DateTime
+    belongs_to :user
   end
   # show index page with all the stuff
   get '/' do
@@ -49,6 +57,11 @@ class Poster < Sinatra::Base
     @images_count = Image.count
     @users_count = User.count
     haml :index
+  end
+  # show last 36 items
+  get '/latest' do
+    @images = Image.all.desc(:created_at).limit(36)
+    haml :latest
   end
   # show upload form
   get '/create' do
@@ -131,6 +144,7 @@ class Poster < Sinatra::Base
         @user = User.find_or_create_by(:uid => env['omniauth.auth']['uid'])
         @user.name = env['omniauth.auth']['info']['name']
         @user.userpic = env['omniauth.auth']['info']['image']
+        @user.visits << Visit.new(:remote_ip => request.ip, :created_at => Time.new)
         @user.save
         session[:uid] = env['omniauth.auth']['uid']
         session[:name] = env['omniauth.auth']['info']['name']

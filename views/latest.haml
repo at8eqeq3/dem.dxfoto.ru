@@ -1,0 +1,11 @@
+.row
+  .span12
+    .page-header
+      %h1
+        Самые новые постеры
+  .span12
+    %ul.thumbnails
+      - @images.each do |image|
+        %li.span3
+          %a.thumbnail{:href => "/image/#{image.filename}"}
+            %img{:src => "/uploads/#{image.filename[0]}/#{image.filename[1]}/#{image.filename}.jpg"}
